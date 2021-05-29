@@ -1,23 +1,23 @@
 /*
 
-SISTEMA DE VIGILANCIA, SECURITYANALYZE(SV_SA):
-
-Se trata de un sistema el cual recive inputs a través de cámaras de seguridad de un lugar/establecimiento,
-el cuál previamente especifíca el tipo de detección que quiere realizar.
+SISTEMA DE VIGILANCIA, SECURITY AI ANALYZER(SV_SA):
+ 
+Se trata de un sistema el cual recibe inputs a través de cámaras de seguridad de un lugar/establecimiento,
+el cual previamente especifica el tipo de detección que quiere realizar.
 Para este caso, el programa se encuentra instalado en el sistema de seguridad y vigilancia de un hotel 5
-estrellas, en el cual sus políticas no permiten el acceso de nigún tipo de animal y/o mascotas.
+estrellas, en el cual sus políticas no permiten el acceso de ningún tipo de animal y/o mascotas.
 El programa está diseñado para detectar animales con el análisis de un fotograma de una cámara de
 seguridad de un hotel. 
 Se puede configurar para otro tipo de detecciones como la edad aparente de una persona para permitir
-su acceso a cierto lugar, entre otas formas de implementación
-
+su acceso a cierto lugar, entre otras formas de implementación
+ 
 Resumen técnico:
 Se crea un arreglo donde cada parte de este representa un fotograma una cámara de seguridad.
 El hotel cuenta con 7 cámaras principales las cuales mandan el input (fotograma). Para el análisis del
 fotograma se realiza una petición al servicio de vision Computer Vision, que forma parte de Azure 
 Cognitive Services. El servicio devuelve información de la cual se extraen los datos necesarios que el
 programa. Por medio de un ciclo doWhile que analiza cada dato recibido desde el análisis implementando 
-un condicional en cada realización del ciclo que verifica si el dato que se etsá analizando es un animal.
+un condicional en cada realización del ciclo que verifica si el dato que se está analizando es un animal.
 
 */
 
@@ -73,19 +73,19 @@ function petición( callback ){
 
 //"análisis" se ejecutará después de "petición"
 //datos = respuesta.data...
-//El análisis de los datos (respuesta.data...) nos indica a cerca de lo que detectó el servicio 
+//El análisis de los datos (respuesta.data...) nos indica acerca de lo que detectó el servicio 
 function análisis( datos ){
 
     //"j" servirá como indicador de la posición del arreglo que se está analizando
     var j = 0
 
-    //Abrimos un cliclo que busque en todo el arreglo (datos) algún animal
+    //Abrimos un ciclo que busque en todo el arreglo (datos) algún animal
     //El ciclo se ejecutará al menos una vez
     //Seguirá su ejecución siempre y cuando el contador (1) sea menor o igual a la cantidad de datos a analizar
     //# de datos = datos.length
     do{
         //Se muestran los animales que el programa puede detectar
-        //El condicional verifica si el dato que el servivio haya detectado es un animal
+        //El condicional verifica si el dato que el servicio haya detectado es un animal
         //Condición del if = "Si el dato del arreglo analizado contiene un animal, mandar una alerta"
         if( (datos[j] == "dog") || (datos[j] == "cat") || (datos[j] == "giraffe")  ){
             //Alerta
@@ -99,7 +99,7 @@ function análisis( datos ){
                         //En caso de no encontrar nada se pasa al siguiente dato
                         break;
         };
-        //En caso de que tras haber analizado todos los datos anteriores sin encontar nada, se manda un aviso
+        //En caso de que tras haber analizado todos los datos anteriores sin encontrar nada, se manda un aviso
         //Condición del if = "Si el último dato del arreglo no contiene un animal, mandar aviso y cerrar el ciclo"
         if( (datos[j] ==! "dog", "cat", "giraffe") && ( j == datos.length ) ){
 
